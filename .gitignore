@@ -3,3 +3,16 @@
 *.iml
 out/
 db.properties
+# Maven build output
+target/
+
+# Environment / secrets
+.env
+.env.*
+
+# Docker
+docker-data/
+
+# OS files
+.DS_Store
+Thumbs.db
