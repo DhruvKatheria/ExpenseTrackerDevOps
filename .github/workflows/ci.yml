@@ -69,4 +69,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/expense-tracker:latest
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/expense-tracker:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/expense-tracker:${{ github.sha }}
