@@ -32,7 +32,7 @@ spec:
               value: expense_app
 
             - name: SPRING_DATASOURCE_PASSWORD
-              value: ExpenseTracker27
+              value: ${DB_PASSWORD}
 
             - name: JWT_SECRET
               value: ExpenseTrackerSecretKeyForJWTAuthentication2026
