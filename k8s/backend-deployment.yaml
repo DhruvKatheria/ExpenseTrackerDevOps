@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expense-tracker-backend
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: expense-tracker-backend
+
+  template:
+    metadata:
+      labels:
+        app: expense-tracker-backend
+
+    spec:
+      containers:
+        - name: expense-tracker-backend
+          image: expensetracker-backend:latest
+
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 8080
+
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://expense-tracker-mysql:3306/expense_tracker
+
+            - name: SPRING_DATASOURCE_USERNAME
+              value: expense_app
+
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: ExpenseTracker27
+
+            - name: JWT_SECRET
+              value: ExpenseTrackerSecretKeyForJWTAuthentication2026

@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expense-tracker-mysql
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: expense-tracker-mysql
+
+  template:
+    metadata:
+      labels:
+        app: expense-tracker-mysql
+
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0
+
+          ports:
+            - containerPort: 3306
+
+          env:
+            - name: MYSQL_DATABASE
+              value: expense_tracker
+
+            - name: MYSQL_USER
+              value: expense_app
+
+            - name: MYSQL_PASSWORD
+              value: ExpenseTracker27
+
+            - name: MYSQL_ROOT_PASSWORD
+              value: SB27@Mysql
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: expense-tracker-mysql
+spec:
+  selector:
+    app: expense-tracker-mysql
+
+  ports:
+    - port: 3306
+      targetPort: 3306
+
+  type: ClusterIP
