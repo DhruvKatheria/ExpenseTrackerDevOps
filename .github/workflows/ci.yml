@@ -57,3 +57,6 @@ jobs:
           DB_USERNAME: expense_app
           DB_PASSWORD: testpassword
         run: mvn --batch-mode verify
+
+      - name: Build Docker image
+        run: docker build -t expense-tracker .
